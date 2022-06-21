@@ -48,6 +48,8 @@ jobs:
       - name: Run command to patch 
         working-directory: ./src
         run: sed -i 's/git(\[\"fetch\",\ remote/git(\[\"fetch\",\ \"--\",\ remote/g' git.ts
+      - name: Check git diff
+        run: git diff src/git.ts      
       - name: git add and commit changes
         run: |
           git add .
@@ -75,6 +77,7 @@ jobs:
         run: echo "TAG_VERSION=workspace-tools_v0.16.2-patched" >> $GITHUB_ENV
       - name: Check git status
         run: git status
+      
       # - name: Get git head
       #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Build

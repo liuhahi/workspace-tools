@@ -40,6 +40,8 @@ jobs:
         run: git fetch --all --tags
       - name: checkout to version 0.16.2
         run: git checkout tags/workspace-tools_v0.16.2
+      - name: Install dependencies
+        run: pnpm i        
       - name: Run command to patch 
         working-directory: ./src
         run: sed -i 's/git(\[\"fetch\",\ remote/git(\[\"fetch\",\ \"--\",\ remote/g' git.ts
@@ -70,8 +72,6 @@ jobs:
         run: echo "TAG_VERSION=workspace-tools_v0.16.2-patched" >> $GITHUB_ENV
       # - name: Get git head
       #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
-      - name: Install dependencies
-        run: pnpm i
       - name: Build
         run: pnpm build
       - name: Publish

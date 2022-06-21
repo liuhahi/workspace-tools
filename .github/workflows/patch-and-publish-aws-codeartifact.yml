@@ -50,6 +50,10 @@ jobs:
         run: sed -i 's/git(\[\"fetch\",\ remote/git(\[\"fetch\",\ \"--\",\ remote/g' git.ts
       - name: Check git diff
         run: git diff src/git.ts      
+      - name: install json
+        run: npm install -g json
+      - name: update repo url
+        run: json -I -f package.json -e "this.repository.url=\"https://github.com/liuhahi/workspace-tools\""        
       - name: git add and commit changes
         run: |
           git add .
@@ -80,11 +84,6 @@ jobs:
       
       # - name: Get git head
       #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
-      - name: install json
-        run: npm install -g json
-      - name: update repo url
-        run: json -I -f package.json -e "this.repository.url=\"https://github.com/liuhahi/workspace-tools\""
-
       - name: Build
         run: pnpm build
       # - name: Update version

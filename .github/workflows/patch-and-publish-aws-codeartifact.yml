@@ -82,17 +82,18 @@ jobs:
       - name: Check git status
         run: git status
       
-      # - name: Get git head
-      #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Get git head
+        run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Build
         run: pnpm build
       # - name: Update version
       #   run: pnpm version 0.16.2-patched
-
+      - name: npm ping
+        run: npm -d ping
       - name: Publish
         run: pnpm publish --no-git-checks
         env:
           TAG_VERSION: ${{env.TAG_VERSION}}
-          # GIT_HEAD: ${{env.GIT_HEAD}}
+          GIT_HEAD: ${{env.GIT_HEAD}}
           FORCE_COLOR: 2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

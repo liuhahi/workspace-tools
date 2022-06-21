@@ -80,10 +80,16 @@ jobs:
       
       # - name: Get git head
       #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: install json
+        run: npm install -g json
+      - name: update repo url
+        run: json -I -f package.json -e "this.repository.url=\"https://github.com/liuhahi/workspace-tools\""
+
       - name: Build
         run: pnpm build
       # - name: Update version
       #   run: pnpm version 0.16.2-patched
+
       - name: Publish
         run: pnpm publish --no-git-checks
         env:

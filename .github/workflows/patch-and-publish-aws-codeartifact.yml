@@ -67,11 +67,11 @@ jobs:
       - name: Check github ref
         run: echo ${GITHUB_REF}
       - name: Get version
-        run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-      - name: Get git head
-        run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
+        run: echo "TAG_VERSION=workspace-tools_v0.16.2-patched" >> $GITHUB_ENV
+      # - name: Get git head
+      #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile
+        run: pnpm i
       - name: Build
         run: pnpm build
       - name: Publish
@@ -79,6 +79,6 @@ jobs:
         run: pnpm publish
         env:
           TAG_VERSION: ${{env.TAG_VERSION}}
-          GIT_HEAD: ${{env.GIT_HEAD}}
+          # GIT_HEAD: ${{env.GIT_HEAD}}
           FORCE_COLOR: 2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      

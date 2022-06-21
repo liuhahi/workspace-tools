@@ -74,9 +74,9 @@ jobs:
       - run: echo CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain scantist --domain-owner ${{ secrets.AWS_ACCOUNT_ID }} --query authorizationToken --output text --region ap-southeast-1 ) >> $GITHUB_ENV
       # Build using SAM
       - name: Gen npmrc
-        run: echo "registry=https://scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/
-          //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:always-auth=true
-          //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:_authToken=${CODEARTIFACT_AUTH_TOKEN}" >> ./.npmrc
+        run: echo "registry=https://scantist-717463981577.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/
+          //scantist-717463981577.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:always-auth=true
+          //scantist-717463981577.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:_authToken=${CODEARTIFACT_AUTH_TOKEN}" >> ./.npmrc
       - name: Check ./.npmrc
         run: cat ./.npmrc
       - name: npm ping

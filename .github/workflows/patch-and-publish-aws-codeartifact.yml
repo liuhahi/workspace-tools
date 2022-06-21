@@ -89,7 +89,10 @@ jobs:
       #   run: pnpm version 0.16.2-patched
       # - name: npm ping
       #   run: npm -d ping
-      
+      - name: configure npm
+        run: |
+          npm config set registry=https://scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.region.amazonaws.com/npm/npm/
+          npm config set //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:_authToken=${CODEARTIFACT_AUTH_TOKEN}
       - name: Publish
         run: pnpm publish --no-git-checks
         env:

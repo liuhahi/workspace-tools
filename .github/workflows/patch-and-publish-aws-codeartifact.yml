@@ -77,7 +77,6 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Publish
-        working-directory: ./dist
         run: pnpm publish
         env:
           TAG_VERSION: ${{env.TAG_VERSION}}

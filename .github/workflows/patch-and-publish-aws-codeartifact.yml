@@ -36,6 +36,8 @@ jobs:
             ${{ runner.os }}-publish-
             ${{ runner.os }}-
 
+      - name: git fetch tags
+        run: git fetch --all --tags
       - name: checkout to version 0.16.2
         run: git checkout tags/workspace-tools_v0.16.2
       - name: Run command to patch 

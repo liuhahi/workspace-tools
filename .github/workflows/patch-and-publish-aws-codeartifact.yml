@@ -43,10 +43,12 @@ jobs:
       - name: Run command to patch 
         working-directory: ./src
         run: sed -i 's/git(\[\"fetch\",\ remote/git(\[\"fetch\",\ \"--\",\ remote/g' git.ts
-      - name: git add .
-        run: git add .
-      - name: git commit 
-        run: git commit -m "patched 0.16.2"
+      - name: git add and commit changes
+        run: |
+          git add .
+          git config user.email "liuzeyan@scantist.com"
+          git config user.name "liuhahi"
+          git commit -m "patched 0.16.2"
       - name: git tag 
         run: git tag workspace-tools_v0.16.2-patched
             

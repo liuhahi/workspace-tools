@@ -53,7 +53,9 @@ jobs:
       - name: install json
         run: npm install -g json
       - name: update repo url
-        run: json -I -f package.json -e "this.repository.url=\"https://github.com/liuhahi/workspace-tools\""        
+        run: json -I -f package.json -e "this.repository.url=\"https://github.com/liuhahi/workspace-tools\""
+      - name: update public
+        run: json -I -f package.json -e "this.publishConfig={\"access\":\"public\"}"
       - name: git add and commit changes
         run: |
           git add .

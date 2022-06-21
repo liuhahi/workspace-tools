@@ -64,7 +64,8 @@ jobs:
         run: echo "registry=https://scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/
           //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:always-auth=true
           //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:_authToken=${CODEARTIFACT_AUTH_TOKEN}" >> ./.npmrc  
-
+      - name: Check github ref
+        run: echo ${GITHUB_REF}
       - name: Get version
         run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Get git head

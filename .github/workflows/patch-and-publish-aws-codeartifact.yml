@@ -79,6 +79,8 @@ jobs:
           //scantist-${{ secrets.AWS_ACCOUNT_ID }}.d.codeartifact.ap-southeast-1.amazonaws.com/npm/npm/:_authToken=${CODEARTIFACT_AUTH_TOKEN}" >> ./.npmrc
       - name: Check ./.npmrc
         run: cat ./.npmrc
+      - name: npm ping
+        run: npm ping
       - name: Check github ref
         run: echo ${GITHUB_REF}
       - name: Get version

@@ -41,7 +41,9 @@ jobs:
       - name: checkout to version 0.16.2
         run: git checkout tags/workspace-tools_v0.16.2
       - name: Install dependencies
-        run: pnpm i        
+        run: |
+          pnpm set strict-peer-dependencies=false
+          pnpm install
       - name: Run command to patch 
         working-directory: ./src
         run: sed -i 's/git(\[\"fetch\",\ remote/git(\[\"fetch\",\ \"--\",\ remote/g' git.ts

@@ -72,6 +72,8 @@ jobs:
         run: echo ${GITHUB_REF}
       - name: Get version
         run: echo "TAG_VERSION=workspace-tools_v0.16.2-patched" >> $GITHUB_ENV
+      - name: Check git status
+        run: git status
       # - name: Get git head
       #   run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Build
